@@ -14,6 +14,10 @@ no_xselectinput.so: no_xselectinput.c
 	gcc $< -o $@ -shared -fPIC -Os
 	strip --strip-unneeded $@
 	
+clean:
+	rm no_xselectinput.so
+	rm oculus_shm_adapter.exe
+	
 install:
 	cp oculus_wine_wrapper.sh $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh
 	ln -s $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh $(INSTALL_PATH)/bin/oculus-wine-wrapper
