@@ -45,16 +45,16 @@ if [ -z $OCULUSD ]; then
 	OCULUSD=/usr/bin/oculusd
 	
 	# Check alternate v4 path
-	if [ -f /opt/oculus/bin/oculusd ]
+	if [ -f /opt/oculus/bin/oculusd ]; then
 		OCULUSD=/opt/oculus/bin/oculusd
 	fi
 	
 	# Check v5 paths
-	if [ -f /usr/bin/ovrd ]
+	if [ -f /usr/bin/ovrd ]; then
     	OCULUSD=/usr/bin/oculusd
 	fi
 			
-	if [ -f /opt/oculus/bin/ovrd ]
+	if [ -f /opt/oculus/bin/ovrd ]; then
 		OCULUSD=/opt/oculus/bin/ovrd
 	fi
 fi
