@@ -22,5 +22,6 @@ install:
 	cp oculus_shm_adapter.exe $(INSTALL_PATH)/lib/oculus-wine-wrapper/oculus_shm_adapter.exe
 	
 uninstall:
+	rm -f $(INSTALL_PATH)/bin/oculus-wine-wrapper
 	rm -f $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh
 	rm -rf $(INSTALL_PATH)/lib/oculus-wine-wrapper
