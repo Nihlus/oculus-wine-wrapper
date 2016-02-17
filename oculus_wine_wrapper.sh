@@ -60,7 +60,7 @@ if [ -z $OCULUSD ]; then
 fi
 
 if [ -z $UTILSDIR ]; then
-	UTILSDIR=/usr/lib/oculus-wine-wrapper
+	UTILSDIR=/usr/local/lib/oculus-wine-wrapper
 fi
 
 if [ ! -x $OCULUSD ]; then
