@@ -60,7 +60,7 @@ if [ -z $OCULUSD ]; then
 fi
 
 if [ -z $UTILSDIR ]; then
-	UTILSDIR=/usr/lib/oculus-wine-wrapper
+	UTILSDIR=/usr/local/lib/oculus-wine-wrapper
 fi
 
 if [ ! -x $OCULUSD ]; then
@@ -77,7 +77,7 @@ if [ $# -lt 1 ]; then
     echo "Usage: $0 [options] /path/to/game.exe [arguments]"
 	echo "$0 options:"
 	echo "  -o, --oculusd       specify location of oculusd or ovrd (default /usr/bin/oculusd)"
-	echo "  -u, --utilsdir      specify location of wrapper utilities (default /usr/lib/oculus-wine-wrapper)"
+	echo "  -u, --utilsdir      specify location of wrapper utilities (default /usr/local/lib/oculus-wine-wrapper)"
 	echo "  -r, --norestart     don't re-execute oculusd after game exits"
 	echo "  -k, --nokill        don't kill running oculusd service"
     exit 1
