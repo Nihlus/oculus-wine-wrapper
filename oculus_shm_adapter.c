@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
     HANDLE ffhandle;
     printf("Oculus Rift shared memory adapter for Wine\n");
     printf("(C) 2014 Jared Stafford (jspenguin@jspenguin.org)\n");
-    printf("Source available at https://jspenguin.org/software/ovrsdk/\n\n");
+    printf("Source available at https://github.com/jspenguin/oculus-wine-wrapper/\n\n");
     if (chdir("/dev/shm") != 0) {
         printf("Could not change directory to /dev/shm: %s\n", strerror(errno));
         return 1;
