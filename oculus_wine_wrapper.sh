@@ -37,8 +37,26 @@ while [[ ${1:0:1} = "-" ]]; do
 	shift
 done
 
+# Check for OVR v4 and v5 SDK installs.
+# v4 names the service oculusd, and v5 names the service ovrd.
+# Additionally, it is on occasion popular to install the service to /opt/oculus.
 if [ -z $OCULUSD ]; then
-    OCULUSD=/usr/bin/oculusd
+	# Set default
+	OCULUSD=/usr/bin/oculusd
+	
+	# Check alternate v4 path
+	if [ -f /opt/oculus/bin/oculusd ]
+		OCULUSD=/opt/oculus/bin/oculusd
+	fi
+	
+	# Check v5 paths
+	if [ -f /usr/bin/ovrd ]
+    	OCULUSD=/usr/bin/oculusd
+	fi
+			
+	if [ -f /opt/oculus/bin/ovrd ]
+		OCULUSD=/opt/oculus/bin/ovrd
+	fi
 fi
 
 if [ -z $UTILSDIR ]; then
@@ -58,7 +76,7 @@ fi
 if [ $# -lt 1 ]; then
     echo "Usage: $0 [options] /path/to/game.exe [arguments]"
 	echo "$0 options:"
-	echo "  -o, --oculusd       specify location of oculusd (default /usr/bin/oculusd)"
+	echo "  -o, --oculusd       specify location of oculusd or ovrd (default /usr/bin/oculusd)"
 	echo "  -u, --utilsdir      specify location of wrapper utilities (default /usr/share/oculus-wine-wrapper)"
 	echo "  -r, --norestart     don't re-execute oculusd after game exits"
 	echo "  -k, --nokill        don't kill running oculusd service"
