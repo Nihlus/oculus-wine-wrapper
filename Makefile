@@ -15,10 +15,11 @@ no_xselectinput.so: no_xselectinput.c
 	strip --strip-unneeded $@
 	
 install:
-	cp oculus_wine_wrapper.sh $INSTALL_PATH/bin
-	cp no_xselectinput.so $INSTALL_PATH/lib/oculus-wine-wrapper
-	cp oculus_shm_adapter.exe $INSTALL_PATH/lib/oculus-wine-wrapper
+	cp oculus_wine_wrapper.sh $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh
+	mkdir $(INSTALL_PATH)/lib/oculus-wine-wrapper/
+	cp no_xselectinput.so $(INSTALL_PATH)/lib/oculus-wine-wrapper/no_xselectinput.so
+	cp oculus_shm_adapter.exe $(INSTALL_PATH)/lib/oculus-wine-wrapper/oculus_shm_adapter.exe
 	
 uninstall:
-	rm -f $INSTALL_PATH/bin/oculus-wine-wrapper.sh
-	rm -rf $INSTALL_PATH/lib/oculus-wine-wrapper
+	rm -f $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh
+	rm -rf $(INSTALL_PATH)/lib/oculus-wine-wrapper
