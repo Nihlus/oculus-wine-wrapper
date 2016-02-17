@@ -11,7 +11,7 @@ oculus_shm_adapter.exe: oculus_shm_adapter.c
 	$(MINGW_PFX)-strip --strip-unneeded $@
 
 no_xselectinput.so: no_xselectinput.c
-	gcc $< -o $@ -shared -fPIC -Os
+	gcc $< -o $@ -shared -fPIC -Os -ldl
 	strip --strip-unneeded $@
 	
 clean:
