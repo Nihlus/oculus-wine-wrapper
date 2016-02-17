@@ -51,7 +51,7 @@ if [ -z $OCULUSD ]; then
 	
 	# Check v5 paths
 	if [ -f /usr/bin/ovrd ]; then
-    	OCULUSD=/usr/bin/oculusd
+		OCULUSD=/usr/bin/oculusd
 	fi
 			
 	if [ -f /opt/oculus/bin/ovrd ]; then
