@@ -4,10 +4,14 @@ INSTALL_PATH?=/usr/local
 
 .DUMMY: all
 
-all: oculus_shm_adapter.exe no_xselectinput.so
+all: oculus_shm_adapter.exe oculus_hwnd_mapper.exe no_xselectinput.so
 
 oculus_shm_adapter.exe: oculus_shm_adapter.c
 	$(MINGW_PFX)-gcc $< -o $@ -Os -shared-libgcc
+	$(MINGW_PFX)-strip --strip-unneeded $@
+	
+oculus_hwnd_mapper.exe: oculus_hwnd_mapper.c
+	$(MINGW_PFX)-gcc $< -o $@ -Os -shared-libgcc -luser32
 	$(MINGW_PFX)-strip --strip-unneeded $@
 
 no_xselectinput.so: no_xselectinput.c
@@ -17,6 +21,7 @@ no_xselectinput.so: no_xselectinput.c
 clean:
 	rm no_xselectinput.so
 	rm oculus_shm_adapter.exe
+	rm oculus_hwnd_mapper.exe
 	
 install:
 	cp oculus_wine_wrapper.sh $(INSTALL_PATH)/bin/oculus-wine-wrapper.sh
@@ -24,6 +29,7 @@ install:
 	mkdir $(INSTALL_PATH)/lib/oculus-wine-wrapper/
 	cp no_xselectinput.so $(INSTALL_PATH)/lib/oculus-wine-wrapper/no_xselectinput.so
 	cp oculus_shm_adapter.exe $(INSTALL_PATH)/lib/oculus-wine-wrapper/oculus_shm_adapter.exe
+	cp oculus_hwnd_mapper.exe $(INSTALL_PATH)/lib/oculus-wine-wrapper/oculus_hwnd_mapper.exe
 	
 uninstall:
 	rm -f $(INSTALL_PATH)/bin/oculus-wine-wrapper
